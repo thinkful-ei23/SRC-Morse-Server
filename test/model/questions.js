@@ -1,15 +1,17 @@
+'use strict';
+
 const mongoose = require('mongoose');
 
 const questionSchema = new mongoose.Schema({
-	question: { type: String }
+  question: { type: String }
 });
 
 questionSchema.set('toObject', {
-	virtuals: true,
-	versionKey: false,
-	transform: (doc, ret) => {
-		delete ret._id;
-	}
+  virtuals: true,
+  versionKey: false,
+  transform: (doc, ret) => {
+    delete ret._id;
+  }
 });
 
 module.exports = mongoose.model('Questions', questionSchema);
