@@ -7,8 +7,8 @@ const router = express.Router();
 
 const Question = require('../test/model/questions');
 
-// to protect endpoint remove is neccessary
-// router.use('/', passport.authenticate('jwt', { session: false, failWithError: true }));
+// to protect endpoint remove if needed
+router.use('/', passport.authenticate('jwt', { session: false, failWithError: true }));
 
 router.get('/', (req, res, next) => {
   // get first item
