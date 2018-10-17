@@ -3,7 +3,15 @@
 const mongoose = require('mongoose');
 
 const questionSchema = new mongoose.Schema({
-  question: { type: String }
+  questions: [
+    {
+      _id: mongoose.Schema.Types.ObjectId,
+      question: String,
+      answer: String,
+      memoryStrength: Number,
+      next: Number
+    }
+  ]
 });
 
 questionSchema.set('toObject', {
