@@ -7,29 +7,34 @@ const jwt = require('jsonwebtoken');
 const config = require('../config');
 const router = express.Router();
 
-const createAuthToken = function (user) {
-  return jwt.sign({ user }, config.JWT_SECRET, {
-    subject: user.username,
-    expiresIn: config.JWT_EXPIRY,
-    algorithm: 'HS256'
-  });
+const createAuthToken = function(user) {
+	return jwt.sign({ user }, config.JWT_SECRET, {
+		subject: user.username,
+		expiresIn: config.JWT_EXPIRY,
+		algorithm: 'HS256'
+	});
 };
 
-const localAuth = passport.authenticate('local', { session: false });
+const options = { session: false, failWithError: true };
+const localAuth = passport.authenticate('local', options);
+
 router.use(bodyParser.json());
 // The user provides a username and password to login
 router.post('/login', localAuth, (req, res) => {
-  //removed serialize from req.user
-  const authToken = createAuthToken(req.user);
-  res.json({ authToken });
+	//removed serialize from req.user
+	const authToken = createAuthToken(req.user);
+	res.json({ authToken });
 });
 
-const jwtAuth = passport.authenticate('jwt', { session: false });
+const jwtAuth = passport.authenticate('jwt', {
+	session: false,
+	failWithError: true
+});
 
 // The user exchanges a valid JWT for a new one with a later expiration
 router.post('/refresh', jwtAuth, (req, res) => {
-  const authToken = createAuthToken(req.user);
-  res.json({ authToken });
+	const authToken = createAuthToken(req.user);
+	res.json({ authToken });
 });
 
 module.exports = router;

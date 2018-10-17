@@ -28,6 +28,7 @@ app.use(
 		origin: CLIENT_ORIGIN
 	})
 );
+app.options('*', cors())
 
 app.use(express.json());
 
