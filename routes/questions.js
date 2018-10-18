@@ -98,13 +98,9 @@ router.post('/',(req,res ,next) => {
         }
       });
 
-<<<<<<< HEAD
-module.exports = router;
-=======
     });
 
 
 });
 
 module.exports = router;
->>>>>>> linked-list
