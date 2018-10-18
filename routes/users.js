@@ -3,6 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const User = require('../test/model/users');
+const seedQuestions = require('../test/db/questions.json');
+
 const router = express.Router();
 const jsonParser = bodyParser.json();
 
@@ -130,6 +132,5 @@ router.post('/', jsonParser, (req, res) => {
 			res.status(500).json({ code: 500, message: 'Internal server error' });
 		});
 });
-
 
 module.exports = router;
