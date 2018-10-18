@@ -12,8 +12,9 @@ const userSchema = new mongoose.Schema({
       _id: mongoose.Schema.Types.ObjectId,
       question: String,
       answer: String,
-      memoryStrength: Number,
-      next: Number
+      memoryStrength: {type: Number, default: 1},
+      next: Number,
+      points: {type: Number, default: 0}
     }
   ],
   head: {
