@@ -5,7 +5,7 @@ const express = require('express');
 const passport = require('passport');
 const router = express.Router();
 
-const Question = require('../test/model/questions');
+// const Question = require('../test/model/questions');
 const User = require('../test/model/users');
 
 
@@ -17,11 +17,11 @@ router.use(
 
 router.get('/', (req, res, next) => {
   const userId = req.user.id;
-  console.log(req.user);
+  // console.log(req.user);
   User.findById(userId)
     .then(user => {
-      console.log(user);
-      console.log('question', user.questions);
+      // console.log(user);
+      // console.log('question', user.questions);
       res.json(user.questions);
     })
     .catch(err => next(err));
