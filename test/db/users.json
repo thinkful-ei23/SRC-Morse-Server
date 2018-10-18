@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Jayce",
+    "username": "Gantz",
+    "password": "$2a$10$2.JVsA/vKd1yzTZr9opKZ.WaClbkKQssN51YeOqFAbR3hDcShIweO",
+    "questions": [
+      {
+        "_id": "5bc75f50cabeb51fe7fa87d3",
+        "question": "...---...",
+        "answer": "SOS",
+        "memoryStrength": 0,
+        "next": 0
+      },
+      {
+        "_id": "5bc75f50cabeb51fe7fa87d4",
+        "question": "-- --- -. --. ---",
+        "answer": "mongo",
+        "memoryStrength": 0,
+        "next": 0
+      },
+      {
+        "_id": "5bc75f50cabeb51fe7fa87d5",
+        "question": "... --.- .-..",
+        "answer": "SQL",
+        "memoryStrength": 0,
+        "next": 0
+      }
+    ]
+  }
+]
