@@ -19,9 +19,10 @@ mongoose.Promise = global.Promise;
 const app = express();
 
 app.use(
-	morgan(process.env.NODE_ENV === 'production' ? 'common' : 'dev', {
-		skip: (req, res) => process.env.NODE_ENV === 'test'
-	})
+	morgan('dev')
+	// morgan(process.env.NODE_ENV === 'production' ? 'common' : 'dev', {
+	// 	skip: (req, res) => process.env.NODE_ENV === 'test'
+	// })
 );
 
 app.use(
