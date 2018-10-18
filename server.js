@@ -11,6 +11,7 @@ const { localStrategy, jwtStrategy } = require('./passport/strategies');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const questionsRouter = require('./routes/questions');
+const protectedRouter = require('./routes/protected');
 
 // const { dbConnect } = require('./db-mongoose');
 
@@ -18,9 +19,10 @@ mongoose.Promise = global.Promise;
 const app = express();
 
 app.use(
-	morgan(process.env.NODE_ENV === 'production' ? 'common' : 'dev', {
-		skip: (req, res) => process.env.NODE_ENV === 'test'
-	})
+	morgan('dev')
+	// morgan(process.env.NODE_ENV === 'production' ? 'common' : 'dev', {
+	// 	skip: (req, res) => process.env.NODE_ENV === 'test'
+	// })
 );
 
 app.use(
@@ -28,7 +30,7 @@ app.use(
 		origin: CLIENT_ORIGIN
 	})
 );
-app.options('*', cors())
+app.options('*', cors());
 
 app.use(express.json());
 
@@ -38,6 +40,7 @@ passport.use(jwtStrategy);
 app.use('/api/users', usersRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/questions', questionsRouter);
+app.use('/api/protected', protectedRouter);
 
 app.use((err, req, res, next) => {
 	if (err.status) {

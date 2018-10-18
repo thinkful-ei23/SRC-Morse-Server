@@ -1,7 +1,32 @@
 [
-	{ "...---...": "SOS" },
-	{ "-- --- -. --. ---": "mongo" },
-	{ ".--. --- ... - --. .-. . ...": "postgres" },
-	{ "-- --- -. --. --- --- ... .": "mongoose" },
-	{ "... --.- .-..": "sql" }
+	{
+		"question": "...---...",
+		"answer": "SOS",
+		"memoryStrength": 1,
+		"next": 1
+	},
+	{
+		"question": "-- --- -. --. ---",
+		"answer": "mongo",
+		"memoryStrength": 1,
+		"next": 2
+	},
+	{
+		"question": ".--. --- ... - --. .-. . ...",
+		"answer": "postgres",
+		"memoryStrength": 1,
+		"next": 3
+	},
+	{
+		"question": "-- --- -. --. --- --- ... .",
+		"answer": "mongoose",
+		"memoryStrength": 1,
+		"next": 4
+	},
+	{
+		"question": "... --.- .-..",
+		"answer": "sql",
+		"memoryStrength": 1,
+		"next": null
+	}
 ]
