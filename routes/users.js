@@ -135,4 +135,45 @@ router.post('/', jsonParser, (req, res) => {
 		});
 });
 
+router.put('/:id', (req, res, next) => {
+	const requiredFields = ['questions', 'points'];
+	const missingField = requiredFields.find(field => !(field in req.body));
+
+	const { id } = req.params;
+	const { questions, head, points } = req.body;
+
+	const progressUpdate = { questions, head, points };
+
+	if (missingField) {
+		return res.status(422).json({
+			code: 422,
+			reason: 'ValidationError',
+			message: 'Missing field',
+			location: missingField
+		});
+	}
+
+	User.findByIdAndUpdate(
+		{ _id: id },
+		{
+			$set: {
+				questions: progressUpdate.questions,
+				head: progressUpdate.head,
+				points: progressUpdate.head
+			}
+		},
+		{ new: true }
+	)
+		.then(result => {
+			res.json(result);
+		})
+		.catch(err => {
+			if (err.code === 11000) {
+				err = new Error('Something got pooched!');
+				err.status = 400;
+			}
+			next(err);
+		});
+});
+
 module.exports = router;
