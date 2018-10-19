@@ -6,7 +6,8 @@ const questionSchema = new mongoose.Schema({
 	question: { type: String },
 	answer: { type: String },
 	memoryStrength: { type: Number },
-	next: {type: Number}
+	next: { type: Number },
+	points: { type: Number }
 });
 
 questionSchema.set('toObject', {

@@ -4,23 +4,24 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  username: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  questions: [
-    {
-      _id: mongoose.Schema.Types.ObjectId,
-      question: String,
-      answer: String,
-      memoryStrength: {type: Number, default: 1},
-      next: Number,
-    }
-  ],
-  head: {
-    type: Number,
-    default: 0
+	name: { type: String, required: true },
+	username: { type: String, required: true, unique: true },
+	password: { type: String, required: true },
+	questions: [
+		{
+			_id: mongoose.Schema.Types.ObjectId,
+			question: String,
+			answer: String,
+			memoryStrength: { type: Number, default: 1 },
+			next: Number,
+			points: Number
+		}
+	],
+	head: {
+		type: Number,
+		default: 0
 	},
-	points: {type: Number, default: 0}
+	points: { type: Number, default: 0 }
 });
 
 userSchema.set('toObject', {
