@@ -135,14 +135,14 @@ router.post('/', jsonParser, (req, res) => {
 		});
 });
 
-router.put('/:id', (req, res, next) => {
-	const requiredFields = ['questions', 'points'];
-	const missingField = requiredFields.find(field => !(field in req.body));
-
+router.put('/:id', jsonParser, (req, res, next) => {
+	console.info('this is the req:', req.body);
 	const { id } = req.params;
 	const { questions, head, points } = req.body;
 
 	const progressUpdate = { questions, head, points };
+	const requiredFields = ['questions', 'points'];
+	const missingField = requiredFields.find(field => !(field in req.body));
 
 	if (missingField) {
 		return res.status(422).json({
