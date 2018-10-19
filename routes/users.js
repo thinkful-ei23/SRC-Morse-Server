@@ -154,7 +154,7 @@ router.put('/:id', (req, res, next) => {
 	}
 
 	User.findByIdAndUpdate(
-		{ _id: id },
+		{ _id: { $oid: id } },
 		{
 			$set: {
 				questions: progressUpdate.questions,
