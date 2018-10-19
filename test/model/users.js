@@ -14,13 +14,13 @@ const userSchema = new mongoose.Schema({
       answer: String,
       memoryStrength: {type: Number, default: 1},
       next: Number,
-      points: {type: Number, default: 0}
     }
   ],
   head: {
     type: Number,
     default: 0
-  }
+	},
+	points: {type: Number, default: 0}
 });
 
 userSchema.set('toObject', {

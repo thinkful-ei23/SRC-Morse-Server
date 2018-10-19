@@ -117,7 +117,9 @@ router.post('/', jsonParser, (req, res) => {
 				username,
 				password: hash,
 				name,
-				questions: seedQuestions
+				questions: seedQuestions,
+				head: 0,
+				points: 0
 			});
 		})
 		.then(user => {
